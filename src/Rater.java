@@ -19,6 +19,7 @@ public class Rater {
 
     public void addRating(String item, double rating) {
         myRatings.add(new Rating(item,rating));
+
     }
 
     public boolean hasRating(String item) {

@@ -64,7 +64,14 @@ public class FirstRatings {
 
     }
 
+        public ArrayList<Rater> loadRaters(String filename){
+        FileResource fr = new FileResource();
+        ArrayList<Rater> raters = new ArrayList<>();
 
+        for(CSVRecord record:fr.getCSVParser()){
+
+        }
+        }
 
 
 
