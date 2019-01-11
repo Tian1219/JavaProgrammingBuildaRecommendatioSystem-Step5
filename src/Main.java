@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         FirstRatings test = new FirstRatings();
 
-       // test.testLoadMovies();
         test.testLoadRaters();
+
     }
 }

@@ -62,6 +62,8 @@ public class FirstRatings {
         System.out.println("Max number of movies by a single director: "+ dirWithMaxMovies);
         System.out.println("Directors that directed the max number of movies: \n" + movieWithMaxdirs);
 
+
+
     }
 
         public ArrayList<Rater> loadRaters(String filename){
@@ -78,13 +80,16 @@ public class FirstRatings {
             if(raterIDlist.contains(rater_id)){
                 for(int k=0;k<raters.size();k++){
                     Rater currRater = raters.get(k);
-                    if(currRater.getID() == rater_id){
+                    if(currRater.getID() .equals(rater_id) ){
                         currRater.addRating(movie_id,rating);
                         raters.set(k,currRater);
+
                     }
                 }
             }else {
                 Rater newRater = new Rater(rater_id);
+                newRater.addRating(movie_id, rating);
+
                 raters.add(newRater);
                 raterIDlist.add(rater_id);
 
@@ -101,7 +106,39 @@ public class FirstRatings {
             //ArrayList<Rater> loadedRaters = loadRaters("data/ratings_short.csv");
             ArrayList<Rater> loadedRaters = loadRaters("data/ratings.csv");
             System.out.println("loadedRaters size: " + loadedRaters.size());
-            System.out.println(loadedRaters);
+           System.out.println("They are: " +loadedRaters);
+            System.out.println("The number of ratings for ID 2 is "+ getRatingsPerRater(loadedRaters,"2"));
+            findMaxNumberOfRatingsByRater(loadedRaters);
         }
+
+       public int getRatingsPerRater(ArrayList<Rater> raters, String rater_id){
+        for(Rater currRater : raters){
+            if(currRater.getID().equals(rater_id)){
+
+              return currRater.numRatings();
+            }
+
+        }   return  -1;
+        }
+
+        public void findMaxNumberOfRatingsByRater(ArrayList<Rater> raters){
+        int max =0;
+        for(Rater currRater : raters){
+            if(currRater.numRatings() > max){
+                max = currRater.numRatings();
+            }
+        }
+            System.out.println(" The maximum number of ratings by any rater " + max);
+            ArrayList<String> raterIDlist = new ArrayList<>();
+
+            for(Rater currRater : raters){
+                if(currRater.numRatings() == max){
+                    raterIDlist.add(currRater.getID());
+                }
+            }
+            System.out.println("And they are: " + raterIDlist);
+        }
+
+
 
 }
