@@ -166,6 +166,7 @@ public class FirstRatings {
                     movies.add(s);
                 }
             }
+
         }
         System.out.println("There are " + movies.size() + " movies rated.");
     }
