@@ -5,6 +5,6 @@ public class Main {
         FirstRatings test = new FirstRatings();
 
         test.testLoadRaters();
-
+          //  test.testLoadMovies();
     }
 }
