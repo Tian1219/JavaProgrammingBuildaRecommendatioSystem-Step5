@@ -14,7 +14,7 @@ public class SecondRatings {
 
     public SecondRatings() {
         // default constructor
-        this("ratedmoviesfull.csv", "ratings.csv");
+        this("data/ratedmoviesfull.csv", "data/ratings.csv");
     }
 
     public SecondRatings(String moviefile, String loadRaters) {
@@ -33,22 +33,58 @@ public class SecondRatings {
         return myRaters.size();
     }
 
-    public double getAverageByID(String id, int minimalRaters){
+    public double getAverageByID(String id, int minimalRaters) {
         int numRatings = 0;
         double totalScore = 0;
-        for(Rater currRater : myRaters){
-            ArrayList<String>  cureMovies = currRater.getItemsRated();
-            if(cureMovies.contains(id)){
+        for (Rater currRater : myRaters) {
+            ArrayList<String> cureMovies = currRater.getItemsRated();
+            if (cureMovies.contains(id)) {
                 numRatings++;
                 totalScore += currRater.getRating(id);
+
             }
         }
-        if (numRatings < minimalRaters){
+        if (numRatings < minimalRaters ) {
+            System.out.println("No such movie");
             return 0.0;
-        } else {
-            return totalScore/numRatings;
+        }/*if(numRatings ==0){
+            System.out.println("No such movie");
+            return 0.0;
+        }*/
+        else {
+            return totalScore / numRatings;
         }
 
     }
+
+    public ArrayList<Rating> getAverageRatings(int minimalRasters) {
+
+        ArrayList<Rating> allAverageRating = new ArrayList<>();
+        for (Movie currMovie : myMovies) {
+            String currMovieID = currMovie.getID();
+            Double averageRating = getAverageByID(currMovieID, minimalRasters);
+            allAverageRating.add(new Rating(currMovieID, averageRating));
+        }
+        return allAverageRating;
+    }
+
+    public String getTitle (String movieID){
+        for(Movie currMovie : myMovies){
+            if (currMovie.getID().equals(movieID)){
+                return currMovie.getTitle();
+            }
+        }
+        return  "N/A";
+    }
+
+    public String getID(String movieTitle){
+        for(Movie currMovie : myMovies){
+            if(currMovie.getTitle().equals(movieTitle)){
+                return currMovie.getID();
+            }
+        }
+        return "N/A";
+    }
+
 
 }
