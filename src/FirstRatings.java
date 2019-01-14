@@ -91,7 +91,8 @@ public class FirstRatings {
                     }
                 }
             } else {
-                Rater newRater = new Rater(rater_id);
+               // Rater newRater = new PlainRater(rater_id);
+                Rater newRater = new EfficientRater(rater_id);
                 newRater.addRating(movie_id, rating);
 
                 raters.add(newRater);

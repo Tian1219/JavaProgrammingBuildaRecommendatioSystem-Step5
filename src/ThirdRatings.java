@@ -1,33 +1,23 @@
+import java.util.ArrayList;
 
-/**
- * Write a description of SecondRatings here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
+public class ThirdRatings {
 
-import java.util.*;
-
-public class SecondRatings {
-    private ArrayList<Movie> myMovies;
     private ArrayList<Rater> myRaters;
 
-    public SecondRatings() {
-        // default constructor
-        this("data/ratedmoviesfull.csv", "data/ratings.csv");
+    public ThirdRatings() {
+        this("ratings.csv");
     }
 
-    public SecondRatings(String moviefile, String loadRaters) {
+    public ThirdRatings(String ratingsfile) {
 
         FirstRatings fr = new FirstRatings();
 
-        myMovies = fr.loadMovie(moviefile);
-        myRaters = fr.loadRaters(loadRaters);
+        myRaters = fr.loadRaters(ratingsfile);
     }
 
-    public int getMoviesSize() {
+  /*  public int getMoviesSize() {
         return myMovies.size();
-    }
+    }*/
 
     public int getRatersSize() {
         return myRaters.size();
@@ -47,38 +37,48 @@ public class SecondRatings {
         if(countRaters >= minimalRaters){
             average = total/countRaters;
         }
+
         return average;
 
     }
 
     public ArrayList<Rating> getAverageRatings(int minimalRasters) {
-
+        ArrayList<String > movies = MovieDatabase.filterBy(new TrueFilter());
         ArrayList<Rating> allAverageRating = new ArrayList<>();
-        for (Movie currMovie : myMovies) {
-            String currMovieID = currMovie.getID();
+        for (String currMovieID : movies) {
+
             Double averageRating = getAverageByID(currMovieID, minimalRasters);
             allAverageRating.add(new Rating(currMovieID, averageRating));
         }
         return allAverageRating;
     }
 
-    public String getTitle(String movieID) {
+    /*public String getTitle(String movieID) {
         for (Movie currMovie : myMovies) {
             if (currMovie.getID().equals(movieID)) {
                 return currMovie.getTitle();
             }
         }
         return "N/A";
-    }
+    }*/
 
-    public String getID(String movieTitle) {
+ /*   public String getID(String movieTitle) {
         for (Movie currMovie : myMovies) {
             if (currMovie.getTitle().equals(movieTitle)) {
                 return currMovie.getID();
             }
         }
         return "N/A";
-    }
+    }*/
 
+    public ArrayList <Rating> getAverageRatingsByFilter(int minimalRaters, Filter filterCriteria){
+                    ArrayList<String> movieIDs =MovieDatabase.filterBy(filterCriteria);
+                    ArrayList<Rating> averageRatings  = new ArrayList<Rating>();
+                    for(String s: movieIDs){
+                        double ratingVluae = getAverageByID(s,minimalRaters);
+                        averageRatings.add(new Rating(s,ratingVluae));
+                    }
+                return averageRatings;
+    }
 
 }

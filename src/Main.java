@@ -8,8 +8,11 @@ public class Main {
           // test.testLoadMovies();
       //  SecondRatings test1 = new SecondRatings();
     //    System.out.println(test1.getAverageByID("0068646",1));;
-        MovieRunnerAverage  test2 = new MovieRunnerAverage();
-        test2.printAverageRating();
-     //   test2.getAverageRatingOneMovie();
+        /*MovieRunnerAverage  test2 = new MovieRunnerAverage();
+      test2.printAverageRating();
+  test2.getAverageRatingOneMovie();*/
+
+        MovieRunnerWithFilters test2 = new MovieRunnerWithFilters();
+        test2.printAverageRatingsByYear();
     }
 }
