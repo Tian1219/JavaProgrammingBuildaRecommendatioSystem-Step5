@@ -75,4 +75,6 @@ public class Movie {
         result += ", genres= " + genres + "]";
         return result;
     }
+
+
 }

@@ -13,6 +13,8 @@ public class Main {
   test2.getAverageRatingOneMovie();*/
 
         MovieRunnerWithFilters test2 = new MovieRunnerWithFilters();
-        test2.printAverageRatingsByYear();
+       // test2.printAverageRatingsByGenre();
+       // test2.printAverageRatingsByMinutes();
+        test2.printAverageRatingsByDirectors();
     }
 }
