@@ -76,7 +76,9 @@ public class ThirdRatings {
                     ArrayList<Rating> averageRatings  = new ArrayList<Rating>();
                     for(String s: movieIDs){
                         double ratingVluae = getAverageByID(s,minimalRaters);
-                        averageRatings.add(new Rating(s,ratingVluae));
+                        if(ratingVluae>0.0) {
+                            averageRatings.add(new Rating(s, ratingVluae));
+                        }
                     }
                 return averageRatings;
     }
