@@ -20,7 +20,9 @@ public class Main {
        // test2.printAverageRatingsByDirectors();
        // test2.printAverageRatingsByYearAfterAndGenre();
       // test2.printAverageRatingsByDirectorsAndMinutes();
-        MovieRunnerSimilarRatings test = new MovieRunnerSimilarRatings();
-        test.printAverageRatingsByYearAfterAndMinutes();
+  //      MovieRunnerSimilarRatings test = new MovieRunnerSimilarRatings();
+  //      test.printAverageRatingsByYearAfterAndMinutes();
+       RecommendationRunner test1 = new RecommendationRunner();
+        test1.printRecommendationsFor("1");
     }
 }
