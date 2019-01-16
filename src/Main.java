@@ -12,13 +12,15 @@ public class Main {
       test2.printAverageRating();
   test2.getAverageRatingOneMovie();*/
 
-        MovieRunnerWithFilters test2 = new MovieRunnerWithFilters();
+       // MovieRunnerWithFilters test2 = new MovieRunnerWithFilters();
        // test2.printAverageRating();
         //test2.printAverageRatingsByYear();
        //test2.printAverageRatingsByGenre();
        // test2.printAverageRatingsByMinutes();
        // test2.printAverageRatingsByDirectors();
        // test2.printAverageRatingsByYearAfterAndGenre();
-       test2.printAverageRatingsByDirectorsAndMinutes();
+      // test2.printAverageRatingsByDirectorsAndMinutes();
+        MovieRunnerSimilarRatings test = new MovieRunnerSimilarRatings();
+        test.printAverageRatingsByYearAfterAndMinutes();
     }
 }
